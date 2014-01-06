@@ -43,6 +43,7 @@ class Level
 
   #update
   def update
+    @bear.update
     @bees.each do |e| e.update end
     kill_bees
   end

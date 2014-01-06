@@ -25,4 +25,14 @@ class Bear
     end
   end
 
+  #shooting
+  def shooting
+    @weapon.shot if window.button_down? Gosu::MsLeft
+  end
+
+  #update
+  def update
+    shooting
+  end
+
 end

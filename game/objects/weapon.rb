@@ -11,6 +11,7 @@ class Weapon
     @window = window
     @img = Gosu::Image.new window, "images/weapons/pistol.png", true
     @x, @y, @angle = 57.5, 225, 0
+    @sound = Gosu::Song.new window, 'sounds/gun.ogg'
   end
 
   attr_reader :window, :x, :y
@@ -23,6 +24,11 @@ class Weapon
   #calculate angle
   def angle
     @angle = Gosu::angle(window.mouse_x, window.mouse_y, x, y) + 90
+  end
+
+  #shot
+  def shot
+    @sound.play(looping = false)
   end
 
 end
