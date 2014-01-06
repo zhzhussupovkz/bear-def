@@ -12,13 +12,17 @@ class Bear
     @img = Gosu::Image.new(window, "images/bear.png", false)
     @drawing = true
     @stamina = 100
+    @weapon = Weapon.new window
   end
 
   attr_reader :window
-  
+
   #draw
   def draw
-    @img.draw 30, 209, 1 if @drawing
+    if @drawing
+      @img.draw 30, 209, 1
+      @weapon.draw
+    end
   end
 
 end

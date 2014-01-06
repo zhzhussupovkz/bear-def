@@ -14,6 +14,7 @@ class Home
 
   attr_reader :window
 
+  #draw
   def draw
     @img.draw 0, 240, 1
   end
