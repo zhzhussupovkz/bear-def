@@ -3,7 +3,9 @@
 require "gosu"
 require "singleton"
 
-require_relative "bee"
-require_relative "mygame"
+require_relative "game/players/bee"
+require_relative "game/players/bear"
+require_relative "game/objects/home"
+require_relative "game/mygame"
 
 Mygame.instance.show

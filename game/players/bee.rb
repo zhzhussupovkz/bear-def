@@ -9,8 +9,7 @@ class Bee
 
   def initialize window, x, y
     @window, @x, @y = window, x, y
-    bees = ["bee.png", "bee-l.png"].sample
-    @img = Gosu::Image.new(window, "images/" + bees, false)
+    @img = Gosu::Image.new(window, "images/bee.png", false)
     @drawing, @green, @red = true, Gosu::Color.argb(0xff00ff00), Gosu::Color.argb(0xffff0000)
     @stamina = 100
   end
@@ -22,8 +21,8 @@ class Bee
   def draw
     if @drawing
       @img.draw(x, y, 1)
-      window.draw_line(x + 4, y - 5, green, x + 4 + stamina/2.5, y - 5, green, 1, mode = :default)
-      window.draw_line(x + 4 + stamina/2.5, y - 5, red, x + 44, y - 5, red, 1, mode = :default)
+      window.draw_line(x + 4, y - 5, green, x + 4 + stamina/4, y - 5, green, 1, mode = :default)
+      window.draw_line(x + 4 + stamina/4, y - 5, red, x + 29, y - 5, red, 1, mode = :default)
     end
   end
 
@@ -42,8 +41,7 @@ class Bee
   def reboot
     @x = 720
     @y = rand(50..400)
-    bees = ["bee.png", "bee-l.png"].sample
-    @img = Gosu::Image.new(window, "images/" + bees, false)
+    @img = Gosu::Image.new(window, "images/bee.png", false)
   end
 
   #move right
