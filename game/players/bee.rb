@@ -29,6 +29,7 @@ class Bee
   #update
   def update
     move_left
+    @drawing = false if stamina == 0
   end
 
   #move left
@@ -45,6 +46,7 @@ class Bee
   #reboot
   def reboot
     @x = 720
+    @drawing = true
     @y = rand(50..400)
     @img = Gosu::Image.new(window, "images/bee.png", false)
   end
