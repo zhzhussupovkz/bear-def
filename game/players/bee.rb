@@ -15,7 +15,7 @@ class Bee
   end
 
   attr_accessor :x, :y
-  attr_reader :window, :green, :red, :stamina
+  attr_reader :window, :green, :red, :stamina, :drawing
   
   #draw
   def draw
@@ -37,6 +37,11 @@ class Bee
     reboot if @x <= 0
   end
 
+  #move right
+  def move_right
+    @x += 1.0
+  end
+
   #reboot
   def reboot
     @x = 720
@@ -44,9 +49,9 @@ class Bee
     @img = Gosu::Image.new(window, "images/bee.png", false)
   end
 
-  #move right
-  def move_right
-    @x += 1.0
+  #add injury when player attack
+  def add_injury
+    @stamina -= 1.0
   end
 
 end
