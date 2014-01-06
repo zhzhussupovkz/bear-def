@@ -11,15 +11,20 @@ class Bee
     @window, @x, @y = window, x, y
     bees = ["bee.png", "bee-l.png"].sample
     @img = Gosu::Image.new(window, "images/" + bees, false)
-    @drawing = true
+    @drawing, @green, @red = true, Gosu::Color.argb(0xff00ff00), Gosu::Color.argb(0xffff0000)
+    @stamina = 100
   end
 
   attr_accessor :x, :y
-  attr_reader :window
+  attr_reader :window, :green, :red, :stamina
   
   #draw
   def draw
-    @img.draw(x, y, 1) if @drawing
+    if @drawing
+      @img.draw(x, y, 1)
+      window.draw_line(x + 4, y - 5, green, x + 4 + stamina/2.5, y - 5, green, 1, mode = :default)
+      window.draw_line(x + 4 + stamina/2.5, y - 5, red, x + 44, y - 5, red, 1, mode = :default)
+    end
   end
 
   #update
