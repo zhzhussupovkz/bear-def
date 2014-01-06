@@ -13,6 +13,7 @@ class Mygame < Gosu::Window
     super 720, 480, false
     self.caption = "Bear Defender"
     @bg = Gosu::Image.new(self, "images/background.png", true)
+    @cursor = Gosu::Image.new(self, 'images/target.png')
     @bees = []
     generate_bees
   end
@@ -29,6 +30,7 @@ class Mygame < Gosu::Window
   def draw
     @bg.draw(0, 0, 0)
     @bees.each do |e| e.draw end
+    @cursor.draw(self.mouse_x, self.mouse_y, 3)
   end
 
   #update
