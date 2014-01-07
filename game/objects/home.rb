@@ -8,8 +8,12 @@
 class Home
 
   def initialize window
-    @window = window
-    @img = Gosu::Image.new window, "images/prop.png", true
+    begin
+      @window = window
+      @img = Gosu::Image.new window, "images/prop.png", true
+    rescue Exception => e
+      puts "#{e.class}: #{e.message}"
+    end
   end
 
   attr_reader :window

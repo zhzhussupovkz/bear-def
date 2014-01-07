@@ -8,10 +8,14 @@
 class Bee
 
   def initialize window, x, y
-    @window, @x, @y = window, x, y
-    @img = Gosu::Image.new(window, "images/bee.png", false)
-    @drawing, @green, @red = true, Gosu::Color.argb(0xff00ff00), Gosu::Color.argb(0xffff0000)
-    @stamina = 100
+    begin
+      @window, @x, @y = window, x, y
+      @img = Gosu::Image.new(window, "images/bee.png", false)
+      @drawing, @green, @red = true, Gosu::Color.argb(0xff00ff00), Gosu::Color.argb(0xffff0000)
+      @stamina = 100
+    rescue Exception => e
+      puts "#{e.class}: #{e.message}"
+    end
   end
 
   attr_accessor :x, :y
@@ -49,11 +53,15 @@ class Bee
 
   #reboot
   def reboot
-    @x = 720
-    @drawing = true
-    @stamina = 100
-    @y = rand(50..400)
-    @img = Gosu::Image.new(window, "images/bee.png", false)
+    begin
+      @x = 720
+      @drawing = true
+      @stamina = 100
+      @y = rand(50..400)
+      @img = Gosu::Image.new(window, "images/bee.png", false)
+    rescue Exception => e
+      puts "#{e.class}: #{e.message}"
+    end
   end
 
   #add injury when player attack

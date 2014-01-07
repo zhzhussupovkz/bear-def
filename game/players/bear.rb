@@ -8,11 +8,15 @@
 class Bear
 
   def initialize window
-    @window = window
-    @img = Gosu::Image.new(window, "images/bear.png", false)
-    @ui = Gosu::Font.new(window, 'Monaco', 20)
-    @drawing, @stamina, @score = true, 100, 0
-    @weapon = Weapon.new window
+    begin
+      @window = window
+      @img = Gosu::Image.new(window, "images/bear.png", false)
+      @ui = Gosu::Font.new(window, 'Monaco', 20)
+      @drawing, @stamina, @score = true, 100, 0
+      @weapon = Weapon.new window
+    rescue Exception => e
+      puts "#{e.class}: #{e.message}"
+    end
   end
 
   attr_reader :window

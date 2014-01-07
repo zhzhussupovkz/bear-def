@@ -8,10 +8,14 @@
 class Weapon
 
   def initialize window
-    @window = window
-    @img = Gosu::Image.new window, "images/weapons/pistol.png", true
-    @x, @y, @angle = 57.5, 225, 0
-    @sound = Gosu::Song.new window, 'sounds/gun.ogg'
+    begin
+      @window = window
+      @img = Gosu::Image.new window, "images/weapons/pistol.png", true
+      @x, @y, @angle = 57.5, 225, 0
+      @sound = Gosu::Song.new window, 'sounds/gun.ogg'
+    rescue Exception => e
+      puts "#{e.class}: #{e.message}"
+    end
   end
 
   attr_reader :window, :x, :y

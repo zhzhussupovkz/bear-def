@@ -8,12 +8,16 @@
 class Level
 
   def initialize window
-    @window = window
-    @bear = Bear.new window
-    @home = Home.new window
-    @bees = []
-    @ui = Gosu::Font.new(window, 'Monaco', 20)
-    generate_bees
+    begin
+      @window = window
+      @bear = Bear.new window
+      @home = Home.new window
+      @bees = []
+      @ui = Gosu::Font.new(window, 'Monaco', 20)
+      generate_bees
+    rescue Exception => e
+      puts "#{e.class}: #{e.message}"
+    end
   end
 
   attr_reader :window, :bear
@@ -37,18 +41,26 @@ class Level
 
   #draw
   def draw
-    @bear.draw
-    @home.draw
-    @bees.each do |e| e.draw end
-    time = (Time.at(Time.now.to_i)).strftime("%Y")
-    @ui.draw("Copyright (c) #{time} by zhzhussupovkz", 225, 450, 3)
+    begin
+      @bear.draw
+      @home.draw
+      @bees.each do |e| e.draw end
+      time = (Time.at(Time.now.to_i)).strftime("%Y")
+      @ui.draw("Copyright (c) #{time} by zhzhussupovkz", 225, 450, 3)
+    rescue Exception => e
+      puts "#{e.class}: #{e.message}"
+    end
   end
 
   #update
   def update
-    @bear.update
-    @bees.each do |e| e.update end
-    kill_bees
+    begin
+      @bear.update
+      @bees.each do |e| e.update end
+      kill_bees
+    rescue Exception => e
+      puts "#{e.class}: #{e.message}"
+    end
   end
 
 end

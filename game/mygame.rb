@@ -12,18 +12,26 @@ class Mygame < Gosu::Window
   def initialize
     super 720, 480, false
     self.caption = "Bear Defender"
-    @bg = Gosu::Image.new self, "images/background.png", true
-    @cursor = Gosu::Image.new self, 'images/target.png'
-    @level = Level.new self
+    begin
+      @bg = Gosu::Image.new self, "images/background.png", true
+      @cursor = Gosu::Image.new self, 'images/target.png'
+      @level = Level.new self
+    rescue Exception => e
+      puts "#{e.class}: #{e.message}"
+    end
   end
 
   attr_reader :level
 
   #draw
   def draw
-    @bg.draw(0, 0, 0)
-    @level.draw
-    @cursor.draw(self.mouse_x, self.mouse_y, 3)
+    begin
+      @bg.draw(0, 0, 0)
+      @level.draw
+      @cursor.draw(self.mouse_x, self.mouse_y, 3)
+    rescue Exception => e
+      puts "#{e.class}: #{e.message}"
+    end
   end
 
   #update
