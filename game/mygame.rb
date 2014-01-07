@@ -17,6 +17,8 @@ class Mygame < Gosu::Window
     @level = Level.new self
   end
 
+  attr_reader :level
+
   #draw
   def draw
     @bg.draw(0, 0, 0)

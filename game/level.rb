@@ -15,7 +15,7 @@ class Level
     generate_bees
   end
 
-  attr_reader :window
+  attr_reader :window, :bear
 
   #generate bees
   def generate_bees

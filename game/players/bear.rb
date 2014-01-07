@@ -10,8 +10,7 @@ class Bear
   def initialize window
     @window = window
     @img = Gosu::Image.new(window, "images/bear.png", false)
-    @drawing = true
-    @stamina = 100
+    @drawing, @stamina, @score = true, 100, 0
     @weapon = Weapon.new window
   end
 
@@ -28,6 +27,11 @@ class Bear
   #shooting
   def shooting
     @weapon.shot if window.button_down? Gosu::MsLeft
+  end
+
+  #add score
+  def add_score
+    @score += 100
   end
 
   #update

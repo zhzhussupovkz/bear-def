@@ -29,7 +29,12 @@ class Bee
   #update
   def update
     move_left
-    @drawing = false if stamina == 0
+    if stamina == 0
+      #drawing
+      @drawing = false
+      #add score to player when kill bee
+      window.level.bear.add_score
+    end
   end
 
   #move left
@@ -46,6 +51,7 @@ class Bee
   #reboot
   def reboot
     @x = 720
+    @stamina = 100
     @drawing = true
     @y = rand(50..400)
     @img = Gosu::Image.new(window, "images/bee.png", false)
