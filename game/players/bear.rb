@@ -10,6 +10,7 @@ class Bear
   def initialize window
     @window = window
     @img = Gosu::Image.new(window, "images/bear.png", false)
+    @ui = Gosu::Font.new(window, 'Monaco', 20)
     @drawing, @stamina, @score = true, 100, 0
     @weapon = Weapon.new window
   end
@@ -22,6 +23,7 @@ class Bear
       @img.draw 30, 209, 1
       @weapon.draw
     end
+    @ui.draw("Score: #{@score}", 25, 10, 3)
   end
 
   #shooting

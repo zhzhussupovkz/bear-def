@@ -12,6 +12,7 @@ class Level
     @bear = Bear.new window
     @home = Home.new window
     @bees = []
+    @ui = Gosu::Font.new(window, 'Monaco', 20)
     generate_bees
   end
 
@@ -39,6 +40,8 @@ class Level
     @bear.draw
     @home.draw
     @bees.each do |e| e.draw end
+    time = (Time.at(Time.now.to_i)).strftime("%Y")
+    @ui.draw("Copyright (c) #{time} by zhzhussupovkz", 225, 450, 3)
   end
 
   #update
