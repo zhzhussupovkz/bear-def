@@ -12,7 +12,7 @@ class Bear
       @window = window
       @img = Gosu::Image.new(window, "images/bear.png", false)
       @ui = Gosu::Font.new(window, 'Monaco', 20)
-      @drawing, @stamina, @score = true, 100, 0
+      @drawing, @stamina, @score, @lives = true, 100, 0, 3
       @weapon = Weapon.new window
     rescue Exception => e
       puts "#{e.class}: #{e.message}"
@@ -43,6 +43,11 @@ class Bear
   #update
   def update
     shooting
+  end
+
+  #add injury
+  def add_injury
+    @stamina -= 2.0
   end
 
 end

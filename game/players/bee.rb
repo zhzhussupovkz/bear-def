@@ -66,7 +66,7 @@ class Bee
 
   #add injury when player attack
   def add_injury
-    @stamina -= 1.0
+    @stamina -= 2.0
   end
 
 end
