@@ -58,8 +58,20 @@ class Level
       @bear.update
       @bees.each do |e| e.update end
       kill_bees
+      set_weapon
     rescue Exception => e
       puts "#{e.class}: #{e.message}"
+    end
+  end
+
+  #set weapon
+  def set_weapon
+    if window.button_down? Gosu::Kb1
+      @bear.change_weapon "pistol"
+    elsif window.button_down? Gosu::Kb2
+      @bear.change_weapon "ics_29"
+    elsif window.button_down? Gosu::Kb3
+      @bear.change_weapon "ak"
     end
   end
 

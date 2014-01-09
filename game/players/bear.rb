@@ -50,6 +50,7 @@ class Bear
   #add injury
   def add_injury
     @stamina -= 2.0
+    @stamina = 0 if @stamina <= 0
   end
 
   #change weapon

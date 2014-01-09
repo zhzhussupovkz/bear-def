@@ -33,7 +33,13 @@ class Weapon
 
   #calculate angle
   def angle
-    @angle = Gosu::angle(window.mouse_x, window.mouse_y, x, y) + 90
+    if window.mouse_x >= 60
+      @angle = Gosu::angle(window.mouse_x, window.mouse_y, x, y) + 90
+    elsif window.mouse_y < 225
+      @angle = -90
+    elsif window.mouse_y > 225
+      @angle = 90
+    end
   end
 
   #calculate power

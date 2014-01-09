@@ -67,6 +67,7 @@ class Bee
   #add injury when player attack
   def add_injury
     @stamina -= window.level.bear.weapon_power
+    @stamina = 0 if @stamina <= 0
   end
 
 end
