@@ -15,7 +15,6 @@ class Bear
       @ui = Gosu::Font.new(window, 'Monaco', 20)
       @drawing, @stamina, @score, @lives = true, 100, 0, 3
       @weapon = Weapon.new window, gun
-      change_weapon "ak"
     rescue Exception => e
       puts "#{e.class}: #{e.message}"
     end
