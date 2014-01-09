@@ -13,6 +13,7 @@ class Weapon
       @img = Gosu::Image.new window, "images/weapons/" + gun + ".png", true
       @x, @y, @angle = 57.5, 225, 0
       @sound = Gosu::Song.new window, 'sounds/'+ gun +'.ogg'
+      @power = 1.0
     rescue Exception => e
       puts "#{e.class}: #{e.message}"
     end
@@ -33,6 +34,18 @@ class Weapon
   #calculate angle
   def angle
     @angle = Gosu::angle(window.mouse_x, window.mouse_y, x, y) + 90
+  end
+
+  #calculate power
+  def power
+    case gun
+    when "pistol"
+      1.0
+    when "ics_29"
+      2.0
+    when "ak"
+      5.0
+    end
   end
 
   #shot

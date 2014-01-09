@@ -57,4 +57,9 @@ class Bear
     @weapon = Weapon.new window, gun
   end
 
+  #get weapon power
+  def weapon_power
+    @weapon.power
+  end
+
 end
