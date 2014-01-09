@@ -12,7 +12,7 @@ class Weapon
       @window, @gun = window, gun
       @img = Gosu::Image.new window, "images/weapons/" + gun + ".png", true
       @x, @y, @angle = 57.5, 225, 0
-      @sound = Gosu::Song.new window, 'sounds/gun.ogg'
+      @sound = Gosu::Song.new window, 'sounds/'+ gun +'.ogg'
     rescue Exception => e
       puts "#{e.class}: #{e.message}"
     end
