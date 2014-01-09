@@ -7,10 +7,10 @@
 #Weapon
 class Weapon
 
-  def initialize window
+  def initialize window, gun
     begin
-      @window = window
-      @img = Gosu::Image.new window, "images/weapons/pistol.png", true
+      @window, @gun = window, gun
+      @img = Gosu::Image.new window, "images/weapons/" + gun + ".png", true
       @x, @y, @angle = 57.5, 225, 0
       @sound = Gosu::Song.new window, 'sounds/gun.ogg'
     rescue Exception => e
@@ -18,11 +18,16 @@ class Weapon
     end
   end
 
-  attr_reader :window, :x, :y
+  attr_reader :window, :x, :y, :gun
 
   #draw
   def draw
     @img.draw_rot x, y, 2, angle
+  end
+
+  #draw ui
+  def draw_ui
+    @img.draw 25, 25, 3
   end
 
   #calculate angle

@@ -10,16 +10,17 @@ class Bear
   def initialize window
     begin
       @window = window
+      @gun = "pistol"
       @img = Gosu::Image.new(window, "images/bear.png", false)
       @ui = Gosu::Font.new(window, 'Monaco', 20)
       @drawing, @stamina, @score, @lives = true, 100, 0, 3
-      @weapon = Weapon.new window
+      @weapon = Weapon.new window, gun
     rescue Exception => e
       puts "#{e.class}: #{e.message}"
     end
   end
 
-  attr_reader :window
+  attr_reader :window, :gun
 
   #draw
   def draw
@@ -28,6 +29,7 @@ class Bear
       @weapon.draw
     end
     @ui.draw("Score: #{@score}", 25, 10, 3)
+    @weapon.draw_ui
   end
 
   #shooting
@@ -48,6 +50,11 @@ class Bear
   #add injury
   def add_injury
     @stamina -= 2.0
+  end
+
+  #change weapon
+  def change_weapon gun
+    @weapon = Weapon.new window, gun
   end
 
 end

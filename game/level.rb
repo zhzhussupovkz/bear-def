@@ -33,7 +33,7 @@ class Level
   #kill bees
   def kill_bees
     @bees.each do |e|
-      if (Gosu::distance(window.mouse_x, window.mouse_y, e.x, e.y) <= 10) && (window.button_down? Gosu::MsLeft) && e.drawing
+      if (Gosu::distance(window.mouse_x, window.mouse_y, e.x + 7.5, e.y + 5.0) <= 10) && (window.button_down? Gosu::MsLeft) && e.drawing
         e.add_injury
       end
     end
